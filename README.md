@@ -4,3 +4,10 @@
   <br>
 </div>
 
+# ➡️ CPP00
+
+- Learned C++ syntax basics and differences from C
+- Understood namespaces, classes, objects, and member functions
+- Acquired knowledge of access specifiers and constructors/destructors
+- Gained experience with input/output operations and function overloading
+- Learned about header files and const correctness
