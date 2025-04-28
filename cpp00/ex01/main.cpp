@@ -6,37 +6,58 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 15:14:25 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/04/26 17:29:30 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/04/28 11:50:39 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
+static int ft_stoi(const std::string& s) {
+	int i;
+	std::istringstream(s) >> i;
+	return i;
+}
+
 void	register_contact(PhoneBook &phone_book) {
 	std::string first_name;
 	std::cout << "Enter first name: ";
 	std::getline(std::cin, first_name);
-	std::replace(first_name.begin(), first_name.end(), '\t', ' ');
+	for (size_t i = 0; i < first_name.length(); ++i) {
+		if (first_name[i] == '\t')
+			first_name[i] = ' ';
+	}
 
 	std::string last_name;
 	std::cout << "Enter last name: ";
 	std::getline(std::cin, last_name);
-	std::replace(last_name.begin(), last_name.end(), '\t', ' ');
+	for (size_t i = 0; i < last_name.length(); ++i) {
+		if (last_name[i] == '\t')
+			last_name[i] = ' ';
+	}
 
 	std::string nickname;
 	std::cout << "Enter nickname: ";
 	std::getline(std::cin, nickname);
-	std::replace(nickname.begin(), nickname.end(), '\t', ' ');
+	for (size_t i = 0; i < nickname.length(); ++i) {
+		if (nickname[i] == '\t')
+			nickname[i] = ' ';
+	}
 
 	std::string phone_number;
 	std::cout << "Enter phone number: ";
 	std::getline(std::cin, phone_number);
-	std::replace(phone_number.begin(), phone_number.end(), '\t', ' ');
+	for (size_t i = 0; i < phone_number.length(); ++i) {
+		if (phone_number[i] == '\t')
+			phone_number[i] = ' ';
+	}
 
 	std::string darkest_secret;
 	std::cout << "Enter darkest secret: ";
 	std::getline(std::cin, darkest_secret);
-	std::replace(darkest_secret.begin(), darkest_secret.end(), '\t', ' ');
+	for (size_t i = 0; i < darkest_secret.length(); ++i) {
+		if (darkest_secret[i] == '\t')
+			darkest_secret[i] = ' ';
+	}
 
 	if (first_name.empty() || last_name.empty() || nickname.empty() || phone_number.empty() || darkest_secret.empty()) {
 		std::cout << "\033[31m❌ Error: one or more empty fields\033[0m" << std::endl;
@@ -44,7 +65,13 @@ void	register_contact(PhoneBook &phone_book) {
 		return ;
 	}
 
-	if (std::all_of(phone_number.begin(), phone_number.end(), ::isdigit) == false)
+	bool all_digits = true;
+	for (size_t i = 0; i < phone_number.length(); ++i) {
+		if (!isdigit(phone_number[i])) {
+			all_digits = false;
+		}
+	}
+	if (all_digits == false)
 	{
 		std::cout << "\033[31m❌ Error: not a phone number\033[0m" << std::endl;
 		std::cout << "🏠 Back to main menu" << std::endl;
@@ -72,7 +99,7 @@ void search_contact(PhoneBook &phone_book) {
 			std::cout << "🏠 Back to main menu" << std::endl;
 			return ;
 		}
-		int index_requested = std::stoi(s_index_requested);
+		int index_requested = ft_stoi(s_index_requested);
 		if (index_requested >= 0 && index_requested <= 7 && index_requested < nb_contact)
 			phone_book.display_contact(index_requested);
 		else
@@ -97,6 +124,7 @@ int	main() {
 	std::cout << "\033[38;5;63m---------------------------------------------\033[0m" << std::endl;
 
 	while (true) {
+		std::cout << "Commands available : ADD, SEARCH and EXIT" << std::endl;
 		std::cout << "➡️  ";
 
 		std::string command;

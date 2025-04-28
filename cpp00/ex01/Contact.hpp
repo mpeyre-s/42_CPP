@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 14:43:29 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/04/26 16:38:36 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/04/28 11:46:18 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <csignal>
 #include <cstdlib>
 #include <thread>
+#include <sstream>
 
 class Contact
 {
