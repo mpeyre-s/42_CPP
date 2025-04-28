@@ -6,16 +6,26 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 15:14:25 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/04/28 11:50:39 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/04/28 12:59:04 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-static int ft_stoi(const std::string& s) {
+static int ft_stoi(const std::string &str) {
 	int i;
-	std::istringstream(s) >> i;
+	std::istringstream(str) >> i;
 	return i;
+}
+
+static bool is_num_string(const std::string &str) {
+	bool all_digits = true;
+	for (size_t i = 0; i < str.length(); ++i) {
+		if (!isdigit(str[i])) {
+			all_digits = false;
+		}
+	}
+	return all_digits;
 }
 
 void	register_contact(PhoneBook &phone_book) {
@@ -65,13 +75,7 @@ void	register_contact(PhoneBook &phone_book) {
 		return ;
 	}
 
-	bool all_digits = true;
-	for (size_t i = 0; i < phone_number.length(); ++i) {
-		if (!isdigit(phone_number[i])) {
-			all_digits = false;
-		}
-	}
-	if (all_digits == false)
+	if (is_num_string(phone_number) == false)
 	{
 		std::cout << "\033[31m❌ Error: not a phone number\033[0m" << std::endl;
 		std::cout << "🏠 Back to main menu" << std::endl;
@@ -93,7 +97,7 @@ void search_contact(PhoneBook &phone_book) {
 		std::cout << "Enter contact index: ";
 		std::getline(std::cin, s_index_requested);
 
-		if (s_index_requested.length() != 1 || std::all_of(s_index_requested.begin(), s_index_requested.end(), ::isdigit) == false)
+		if (s_index_requested.length() != 1 || is_num_string(s_index_requested) == false)
 		{
 			std::cout << "\033[31m❌ Error: contact index must exist (between 0 and 7)\033[0m" << std::endl;
 			std::cout << "🏠 Back to main menu" << std::endl;
@@ -117,8 +121,6 @@ void exit_program(int signum) {
 int	main() {
 	PhoneBook phone_book;
 
-	std::signal(SIGINT, exit_program);
-
 	std::cout << "\033[38;5;39m---------------------------------------------" << std::endl;
 	std::cout << "\033[38;5;33m|        ☎️  \033[1;4mMy Awesome PhoneBook\033[0m\033[38;5;33m ☎️          |" << std::endl;
 	std::cout << "\033[38;5;63m---------------------------------------------\033[0m" << std::endl;
@@ -136,8 +138,6 @@ int	main() {
 			search_contact(phone_book);
 		else if (command == "EXIT")
 			exit_program(EXIT_SUCCESS);
-
-		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 	return 0;
 }
