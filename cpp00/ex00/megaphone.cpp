@@ -6,11 +6,12 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 10:27:17 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/04/26 12:37:30 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/04/28 11:06:10 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstring>
 
 int	main(int ac, char **av) {
 	if (ac == 1)
