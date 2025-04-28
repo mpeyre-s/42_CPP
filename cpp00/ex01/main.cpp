@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 15:14:25 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/04/28 12:59:04 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/04/28 13:13:10 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,9 @@ void exit_program(int signum) {
 int	main() {
 	PhoneBook phone_book;
 
-	std::cout << "\033[38;5;39m---------------------------------------------" << std::endl;
+	std::cout << "\033[38;5;39m=============================================" << std::endl;
 	std::cout << "\033[38;5;33m|        ☎️  \033[1;4mMy Awesome PhoneBook\033[0m\033[38;5;33m ☎️          |" << std::endl;
-	std::cout << "\033[38;5;63m---------------------------------------------\033[0m" << std::endl;
+	std::cout << "\033[38;5;63m=============================================\033[0m" << std::endl;
 
 	while (true) {
 		std::cout << "Commands available : ADD, SEARCH and EXIT" << std::endl;
