@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:40:05 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/02 13:36:40 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/02 13:40:38 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int ac, char **av) {
 			return 1;
 		}
 
-		std::ofstream resultFile("sed_" + filename);
+		std::ofstream resultFile(("sed_" + filename).c_str());
 		if (!resultFile) {
 			std::cerr << "Erorr : temp file not created" << std::endl;
 			return 1;
