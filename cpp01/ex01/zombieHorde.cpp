@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:42:18 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/04/28 16:00:55 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/05 13:37:33 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ Zombie* zombieHorde(int N, std::string name) {
 		return NULL;
 	Zombie* horde = new Zombie[N];
 	for (size_t i = 0; i < (size_t)N; i++)
-		horde[i] = Zombie(name);
+		horde[i].setName(name);
 	return horde;
 }

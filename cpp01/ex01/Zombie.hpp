@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:41:07 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/05 12:56:46 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/05 13:37:21 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	~Zombie();
 
 	void announce(void);
+	void setName(const std::string& _name);
 };
 
 Zombie* zombieHorde(int N, std::string name);
