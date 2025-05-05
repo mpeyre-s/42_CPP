@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 10:33:41 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/05 12:49:37 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/05 12:48:23 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,22 @@ void Harl::error(void) {
 void	Harl::complain(std::string level) {
 	void (Harl::*pointer_to_member[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string level_list[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int current_level;
 
-	for (int i = 0; i < 4; i++)
-	{
+	for (int i = 0; i < 4; i++) {
 		if (level == level_list[i])
-		{
-			(this->*pointer_to_member[i])();
-			return ;
-		}
+			current_level = i;
+	}
+
+	switch (current_level) {
+		case 0:
+			(this->*pointer_to_member[0])();
+		case 1:
+			(this->*pointer_to_member[1])();
+		case 2:
+			(this->*pointer_to_member[2])();
+		case 3:
+			(this->*pointer_to_member[3])();
 	}
 }
 
