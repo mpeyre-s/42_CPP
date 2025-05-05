@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:37:20 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/04/29 15:25:04 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/05 13:17:14 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 	~HumanB();
 
 	void attack();
-	void setWeapon(Weapon _weapon);
+	void setWeapon(Weapon &_weapon);
 };
 
 #endif

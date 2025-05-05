@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 14:41:07 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/04/28 17:36:50 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/05 12:56:46 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <cstdlib>
 
 class Zombie {
 private:
