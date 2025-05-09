@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 10:19:35 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/09 13:38:05 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/09 15:17:10 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,33 @@
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
+#include "Brain.hpp"
 
 int main() {
-	const Animal* meta = new Animal();
-	const Animal* dog = new Dog();
-	const Animal* cat = new Cat();
-	std::cout << dog->getType() << " " << std::endl;
-	std::cout << cat->getType() << " " << std::endl;
-	dog->makeSound();
-	cat->makeSound();
-	meta->makeSound();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	delete j;
+	delete i;
 
-	delete meta;
-	delete dog;
-	delete cat;
+	std::cout << "\n--- Array of Animals Test ---" << std::endl;
 
-	std::cout << std::endl;
+	const int arraySize = 10;
+	Animal* animalArray[arraySize];
 
-	const WrongAnimal* wrong = new WrongAnimal();
-	const WrongAnimal* wrongCat = new WrongCat();
-	std::cout << wrongCat->getType() << " " << std::endl;
-	wrong->makeSound();
-	wrongCat->makeSound();
+	for (int i = 0; i < arraySize; i++) {
+		if (i < arraySize / 2)
+			animalArray[i] = new Dog();
+		else
+			animalArray[i] = new Cat();
 
-	delete wrong;
-	delete wrongCat;
+		std::cout << "Created " << animalArray[i]->getType() << " at index " << i << std::endl;
+	}
 
-	std::cout << std::endl;
-
-	Dog d2;
-	Cat c2;
-	d2.makeSound();
-	c2.makeSound();
+	std::cout << "\nCleaning up animal array..." << std::endl;
+	for (int i = 0; i < arraySize; i++) {
+		std::cout << "Deleting " << animalArray[i]->getType() << " at index " << i << std::endl;
+		delete animalArray[i];
+	}
 
 	return 0;
 }
