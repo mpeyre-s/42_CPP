@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 11:29:52 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/09 14:52:52 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/10 11:25:34 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ void Dog::makeSound() const {
 Dog::Dog(const Dog &other) {
 	std::cout << "Copy constructor called for Dog Class" << std::endl;
 	this->type = other.getType();
+	this->brain = new Brain(*(other.brain));
 }
 
 Dog &Dog::operator=(const Dog &other) {
 	std::cout << "Copy assignment operator called for Dog Class" << std::endl;
 	if (this != &other) {
 		type = other.getType();
+		delete brain;
+		brain = new Brain(*(other.brain));
 	}
 	return *this;
 }

@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 11:28:10 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/09 14:53:08 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/10 11:25:29 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ void Cat::makeSound() const {
 Cat::Cat(const Cat &other) {
 	std::cout << "Copy constructor called for Cat Class" << std::endl;
 	this->type = other.getType();
+	this->brain = new Brain(*(other.brain));
 }
 
 Cat &Cat::operator=(const Cat &other) {
 	std::cout << "Copy assignment operator called for Cat Class" << std::endl;
 	if (this != &other) {
 		type = other.getType();
+		delete brain;
+		brain = new Brain(*(other.brain));
 	}
 	return *this;
 }
