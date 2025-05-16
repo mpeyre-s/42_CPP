@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:26:29 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/16 10:18:15 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/16 13:22:25 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 void AForm::beSigned(Bureaucrat &obj) {
 	if (sign_grade >= obj.getGrade()) {
 		signature = true;
-		std::cout << obj.getName() << " signed " << name << std::endl;
 	}
 	else
 		throw GradeTooLowException();
