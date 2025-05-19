@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:48:04 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/19 13:39:23 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/19 15:52:20 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,18 +113,20 @@ static void print_float(const std::string& literal) {
 		std::cout << literal << std::endl;
 	} else {
 		try {
-			float value;
 			std::string temp = literal;
-
 			if (!temp.empty() && temp[temp.length() - 1] == 'f')
 				temp = temp.substr(0, temp.length() - 1);
 
-			value = std::stof(temp);
+			char* endptr;
+			float value = strtof(temp.c_str(), &endptr);
 
-			if (value == static_cast<int>(value))
+			if (*endptr != '\0') {
+				std::cout << "Impossible" << std::endl;
+			} else if (value == static_cast<int>(value)) {
 				std::cout << value << ".0f" << std::endl;
-			else
+			} else {
 				std::cout << value << "f" << std::endl;
+			}
 		}
 		catch (const std::exception&) {
 			std::cout << "Impossible" << std::endl;
@@ -145,18 +147,20 @@ static void print_double(const std::string& literal) {
 		std::cout << "-inf" << std::endl;
 	} else {
 		try {
-			double value;
 			std::string temp = literal;
-
 			if (!temp.empty() && temp[temp.length() - 1] == 'f')
 				temp = temp.substr(0, temp.length() - 1);
 
-			value = std::stod(temp);
+			char* endptr;
+			double value = strtod(temp.c_str(), &endptr);
 
-			if (value == static_cast<int>(value))
+			if (*endptr != '\0') {
+				std::cout << "Impossible" << std::endl;
+			} else if (value == static_cast<int>(value)) {
 				std::cout << value << ".0" << std::endl;
-			else
+			} else {
 				std::cout << value << std::endl;
+			}
 		}
 		catch (const std::exception&) {
 			std::cout << "Impossible" << std::endl;

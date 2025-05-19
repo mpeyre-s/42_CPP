@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:50:23 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/19 14:17:12 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/19 15:56:49 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstdint>
 #include "Data.hpp"
 
 class Serializer {
