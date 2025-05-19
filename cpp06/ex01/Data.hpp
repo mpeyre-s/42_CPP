@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:03:09 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/19 14:03:31 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/19 16:14:36 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 struct Data {
 	int	nb;
+	std::string str;
 };
 
 #endif

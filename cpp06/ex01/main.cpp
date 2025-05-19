@@ -6,24 +6,32 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:49:59 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/19 14:17:27 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/19 16:23:58 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
 int main() {
-	Data *data = new Data;
-	uintptr_t int_addr;
+	Data data;
+	data.nb = 42;
+	data.str = "Hello World";
 
-	std::cout << "Adress Data ptr : " << data << std::endl;
+	std::cout << "Original pointer: " << &data << std::endl;
 
-	int_addr = Serializer::serialize(data);
-	std::cout << "Adress converted to int : " << int_addr << std::endl;
+	uintptr_t raw = Serializer::serialize(&data);
 
-	data = Serializer::deserialize(int_addr);
-	std::cout << "Undo conversion ptr address : " << data << std::endl;
+	std::cout << "Serialized adress pointer: " << raw << std::endl;
 
-	delete data;
+	Data* recovered = Serializer::deserialize(raw);
+
+	std::cout << "Recovered pointer: " << recovered << std::endl;
+
+	if (recovered == &data)
+		std::cout << "Success: The pointer was correctly serialized and deserialized." << std::endl;
+	else
+		std::cout << "Failure: The pointers do not match." << std::endl;
+	std::cout << "Recovered data: number = " << recovered->nb << ", text = " << recovered->str << std::endl;
+
 	return 0;
 }
