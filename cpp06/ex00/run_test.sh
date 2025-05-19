@@ -18,7 +18,7 @@ test_cases=(
 	"-inff"        # Pseudo-literal (-inff)
 	"0"            # Subject test
 	"42.0f"        # Subject test
-	"abc"          # Invalid string
+	"abc42"        # Invalid string
 	""             # Empty string
 	"123abc"       # String with number and letters
 	"4.2ff"        # Invalid float
