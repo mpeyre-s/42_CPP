@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 13:48:04 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/19 22:21:07 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/20 10:18:03 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,27 @@ bool isStrictlyFloat(const std::string& literal) {
 	return isStrictlyDouble(withoutF) && literal[literal.length() - 1] == 'f';
 }
 
+bool isValidLiteral(const std::string& literal) {
+	if (literal == "nan" || literal == "+inf" || literal == "-inf" ||
+		literal == "nanf" || literal == "+inff" || literal == "-inff")
+		return true;
+
+	if (literal.length() == 1)
+		return true;
+
+	return isStrictlyInteger(literal) || isStrictlyDouble(literal) || isStrictlyFloat(literal);
+}
+
 void print_char(int num, const std::string& literal) {
 	std::cout << "char: ";
 
-	if (literal == "nan" || literal == "+inf" || literal == "-inf" || literal == "nanf" || literal == "+inff" || literal == "-inff" || literal.empty() || (literal.length() > 1 && !isdigit(literal[0]) && !isdigit(literal[1])))
+	if (!isValidLiteral(literal))
 		std::cout << "Impossible" << std::endl;
-	else if (!isStrictlyInteger(literal) && !isStrictlyDouble(literal) && !isStrictlyFloat(literal) && literal.length() == 1)
+	else if (literal == "nan" || literal == "+inf" || literal == "-inf" ||
+			 literal == "nanf" || literal == "+inff" || literal == "-inff")
+		std::cout << "Impossible" << std::endl;
+	else if (!isStrictlyInteger(literal) && !isStrictlyDouble(literal) &&
+			 !isStrictlyFloat(literal) && literal.length() == 1)
 		std::cout << "'" << literal[0] << "'" << std::endl;
 	else if (num < 0 || num > 127)
 		std::cout << "Impossible" << std::endl;
@@ -89,12 +104,14 @@ void print_char(int num, const std::string& literal) {
 void print_int(int num, const std::string& literal) {
 	std::cout << "int: ";
 
-	if (literal == "nan" || literal == "+inf" || literal == "-inf" || literal == "nanf" || literal == "+inff" || literal == "-inff" || literal.empty())
+	if (!isValidLiteral(literal))
 		std::cout << "Impossible" << std::endl;
-	else if (num < INT_MIN || num > INT_MAX || (literal.length() > 1 && !isdigit(literal[0]) && !isdigit(literal[1])))
+	else if (literal == "nan" || literal == "+inf" || literal == "-inf" ||
+			 literal == "nanf" || literal == "+inff" || literal == "-inff")
 		std::cout << "Impossible" << std::endl;
-	else if (!isStrictlyInteger(literal) && !isStrictlyDouble(literal) && !isStrictlyFloat(literal) && literal.length() == 1)
-		std::cout <<  static_cast<int>(literal[0]) << std::endl;
+	else if (!isStrictlyInteger(literal) && !isStrictlyDouble(literal) &&
+			 !isStrictlyFloat(literal) && literal.length() == 1)
+		std::cout << static_cast<int>(literal[0]) << std::endl;
 	else
 		std::cout << num << std::endl;
 }
@@ -110,6 +127,8 @@ void print_float(const std::string& literal) {
 		std::cout << literal << "f" << std::endl;
 	else if (literal == "+inff" || literal == "-inff")
 		std::cout << literal << std::endl;
+	else if (!isStrictlyInteger(literal) && !isStrictlyDouble(literal) && !isStrictlyFloat(literal) && literal.length() == 1)
+		std::cout << static_cast<float>(literal[0]) << ".0f" << std::endl;
 	else {
 		try {
 			std::string temp = literal;
@@ -145,6 +164,8 @@ void print_double(const std::string& literal) {
 		std::cout << "+inf" << std::endl;
 	else if (literal == "-inff")
 		std::cout << "-inf" << std::endl;
+	else if (!isStrictlyInteger(literal) && !isStrictlyDouble(literal) && !isStrictlyFloat(literal) && literal.length() == 1)
+		std::cout << static_cast<float>(literal[0]) << ".0" << std::endl;
 	else {
 		try {
 			std::string temp = literal;
