@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 14:08:45 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/21 15:14:21 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/21 16:06:27 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <climits>
 
 class Span {
 private:
