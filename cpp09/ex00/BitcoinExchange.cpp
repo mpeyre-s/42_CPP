@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 10:20:38 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/22 15:23:42 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/27 13:00:53 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ BitcoinExchange::BitcoinExchange(std::string &input_file) {
 	d_file.close();
 
 	// .txt parsing and processing line by line
-	std::ifstream file(input_file);
+	std::ifstream file(input_file.c_str());
 	if (!file.is_open())
 		throw FileUnopenableException(input_file);
 
