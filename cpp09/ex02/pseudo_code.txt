@@ -1,0 +1,38 @@
+Fonction FordJohnsonSort(tableau):
+    n = longueur(tableau)
+    Si n <= 1:
+        Retourner tableau
+
+    # Diviser le tableau en deux moitiés
+    milieu = n / 2
+    gauche = tableau[0..milieu-1]
+    droite = tableau[milieu..n-1]
+
+    # Recursivement trier les deux moitiés
+    gauche = FordJohnsonSort(gauche)
+    droite = FordJohnsonSort(droite)
+
+    # Fusionner les deux moitiés triées en utilisant une pile
+    pile = nouvelle Pile()
+    i = 0
+    j = 0
+
+    # Tant qu'il y a des éléments dans les deux moitiés
+    Tant que i < longueur(gauche) et j < longueur(droite):
+        Si gauche[i] <= droite[j]:
+            pile.empiler(gauche[i])
+            i = i + 1
+        Sinon:
+            pile.empiler(droite[j])
+            j = j + 1
+
+    # Ajouter les éléments restants de gauche
+    Tant que i < longueur(gauche):
+        pile.empiler(gauche[i])
+        i = i + 1
+
+    # Ajouter les éléments restants de droite
+    Tant que j < longueur(droite):
+        pile.empiler(droite[j])
+        j = j + 1
+
