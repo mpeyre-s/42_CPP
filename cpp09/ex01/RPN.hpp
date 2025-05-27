@@ -6,7 +6,7 @@
 /*   By: mathispeyre <mathispeyre@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 11:12:27 by mathispeyre       #+#    #+#             */
-/*   Updated: 2025/05/26 12:08:55 by mathispeyre      ###   ########.fr       */
+/*   Updated: 2025/05/27 13:03:22 by mathispeyre      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <vector>
 #include <algorithm>
 #include <cctype>
+#include <stack>
 
 class RPN {
 private:
